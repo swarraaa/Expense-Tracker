@@ -23,6 +23,7 @@ import job from "./cron.js";
 
 dotenv.config();
 configurePassport();
+// console.log(process.env.SESSION_SECRET);
 
 job.start();
 
@@ -43,11 +44,11 @@ store.on("error", (err) => console.log(err));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false, // this option specifies whether to save the session to the store on every request
-    saveUninitialized: false, // option specifies whether to save uninitialized sessions
+    resave: false,
+    saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true, // this option prevents the Cross-Site Scripting (XSS) attacks
+      httpOnly: true,
     },
     store: store,
   })
@@ -90,6 +91,7 @@ app.get("*", (req, res) => {
 
 // Modified server startup
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
+// console.log(process.env.MONGO_URI);
 await connectDB();
 
 console.log(`🚀 Server ready at http://localhost:4000/graphql`);
