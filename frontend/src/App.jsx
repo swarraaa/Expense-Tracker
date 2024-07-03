@@ -14,27 +14,27 @@ function App() {
 
   if (loading) return null;
 
+  const authUser = data?.authUser;
+
   return (
     <>
-      {data?.authUser && <Header />}
+      {authUser && <Header />}
       <Routes>
         <Route
           path="/"
-          element={data.authUser ? <HomePage /> : <Navigate to="/login" />}
+          element={authUser ? <HomePage /> : <Navigate to="/login" />}
         />
         <Route
           path="/login"
-          element={!data.authUser ? <LoginPage /> : <Navigate to="/" />}
+          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
         />
         <Route
           path="/signup"
-          element={!data.authUser ? <SignUpPage /> : <Navigate to="/" />}
+          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
         />
         <Route
           path="/transaction/:id"
-          element={
-            data.authUser ? <TransactionPage /> : <Navigate to="/login" />
-          }
+          element={authUser ? <TransactionPage /> : <Navigate to="/login" />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -20,7 +20,6 @@ const TransactionPage = () => {
   const [updateTransaction, { loading: loadingUpdate }] = useMutation(
     UPDATE_TRANSACTION,
     {
-      // https://github.com/apollographql/apollo-client/issues/5419 => refetchQueries is not working, and here is how we fixed it
       refetchQueries: [{ query: GET_TRANSACTION_STATISTICS }],
     }
   );
@@ -36,8 +35,7 @@ const TransactionPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const amount = parseFloat(formData.amount); // convert amount to number bc by default it is string
-    // and the reason it's coming from an input field
+    const amount = parseFloat(formData.amount);
     try {
       await updateTransaction({
         variables: {
@@ -86,7 +84,6 @@ const TransactionPage = () => {
         className="w-full max-w-lg flex flex-col gap-5 px-3 "
         onSubmit={handleSubmit}
       >
-        {/* TRANSACTION */}
         <div className="flex flex-wrap">
           <div className="w-full">
             <label
@@ -106,7 +103,6 @@ const TransactionPage = () => {
             />
           </div>
         </div>
-        {/* PAYMENT TYPE */}
         <div className="flex flex-wrap gap-3">
           <div className="w-full flex-1 mb-6 md:mb-0">
             <label
@@ -138,7 +134,6 @@ const TransactionPage = () => {
             </div>
           </div>
 
-          {/* CATEGORY */}
           <div className="w-full flex-1 mb-6 md:mb-0">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -170,7 +165,6 @@ const TransactionPage = () => {
             </div>
           </div>
 
-          {/* AMOUNT */}
           <div className="w-full flex-1 mb-6 md:mb-0">
             <label
               className="block uppercase text-white text-xs font-bold mb-2"
@@ -190,7 +184,6 @@ const TransactionPage = () => {
           </div>
         </div>
 
-        {/* LOCATION */}
         <div className="flex flex-wrap gap-3">
           <div className="w-full flex-1 mb-6 md:mb-0">
             <label
@@ -210,7 +203,6 @@ const TransactionPage = () => {
             />
           </div>
 
-          {/* DATE */}
           <div className="w-full flex-1">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -230,7 +222,6 @@ const TransactionPage = () => {
             />
           </div>
         </div>
-        {/* SUBMIT BUTTON */}
         <button
           className="text-white font-bold w-full rounded px-4 py-2 bg-gradient-to-br
           from-pink-500 to-pink-500 hover:from-pink-600 hover:to-pink-600"
