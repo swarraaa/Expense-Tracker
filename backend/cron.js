@@ -3,6 +3,7 @@ import https from "https";
 
 const URL = "https://graphql-crash-course.onrender.com";
 
+// "*/14 * * * *" /14 means every 14 minutes and * means every hour, every day of the month, every month, and every day of the week
 const job = new cron.CronJob("*/14 * * * *", function () {
   https
     .get(URL, (res) => {

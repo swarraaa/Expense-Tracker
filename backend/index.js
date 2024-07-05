@@ -24,18 +24,15 @@ job.start();
 
 const __dirname = path.resolve();
 const app = express();
-
 const httpServer = http.createServer(app);
 
+// The MongoDB session is a way to store session data on the server side using MongoDB as the storage mechanism.
 const MongoDBStore = connectMongo(session);
-
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   collection: "sessions",
 });
-
 store.on("error", (err) => console.log(err));
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -49,6 +46,7 @@ app.use(
   })
 );
 
+// Passport.js is an authentication middleware for Node.js. The passport.session middleware is used to handle authentication sessions.
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -83,3 +81,22 @@ await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 await connectDB();
 
 console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+
+// 1. import the necessary packages and modules.
+// 2. configure passport authentication.
+// 3. start cron job to send a GET request to the URL every 14 minutes to keep the server awake.
+// 4. create an express app.
+// 5. create an http server using the express app.
+// 6. create a MongoDBStore instance. This is used to store the session data in the database.
+// 7. configure the session. We use the MongoDBStore instance to store the session data.
+// 8. use passport middleware. This is used to initialize passport and session.
+// 9. create an ApolloServer instance.
+// 10. start the ApolloServer.
+// 11. use the ApolloServer instance as middleware.
+// 12. serve the frontend files.
+// 13. listen to the http server.
+// 14. connect to the database.
+// 15. log the server ready message.
+
+// Serializing a user: When a user logs in, Passport.js saves the user's ID into the session.
+// Deserializing a user: On subsequent requests, Passport.js reads the user's ID from the session and fetches the full user details from the database.

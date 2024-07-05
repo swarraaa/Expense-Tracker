@@ -85,6 +85,8 @@ const transactionResolver = {
       }
     },
   },
+
+  // Relationship resolver for Transaction type to get user of a transaction using userId
   Transaction: {
     user: async (parent) => {
       const userId = parent.userId;

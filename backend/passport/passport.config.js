@@ -5,6 +5,7 @@ import User from "../models/user.model.js";
 import { GraphQLLocalStrategy } from "graphql-passport";
 
 export const configurePassport = async () => {
+  // user is the user object that we return from the GraphQLLocalStrategy
   passport.serializeUser((user, done) => {
     console.log("Serializing user");
     done(null, user.id);
@@ -20,6 +21,7 @@ export const configurePassport = async () => {
     }
   });
 
+  // This is the strategy that we will use to authenticate users
   passport.use(
     new GraphQLLocalStrategy(async (username, password, done) => {
       try {

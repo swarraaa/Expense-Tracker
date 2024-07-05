@@ -70,6 +70,7 @@ const userResolver = {
       }
     },
   },
+
   Query: {
     authUser: async (_, __, context) => {
       try {
@@ -90,6 +91,8 @@ const userResolver = {
       }
     },
   },
+
+  // relationship resolver for User type to get transactions of a user using userId
   User: {
     transactions: async (parent) => {
       try {
