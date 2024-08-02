@@ -5,11 +5,10 @@ This project is a comprehensive expense tracker application built using the MERN
 ## Features
 
 - **Tech Stack**: MERN (MongoDB, Express.js, React.js, Node.js) with Apollo GraphQL.
-- **GraphQL Mutations**: Modify data through GraphQL API with defined mutations and establish graph relationships.
 - **Authentication**: Uses Passport.js for secure user authentication and MongoDB session store for session management.
-- **Global State Management**: Utilizes Apollo Client for efficient state management across the application.
+- **Apollo**: Utilizes Apollo Client on the frontend and Apollo server on the backend.
 - **Deployment**: Deployed using Render, ensuring seamless continuous integration and delivery.
-- **Automation**: Includes Cron jobs for scheduled tasks to enhance automation.
+- **Automation**: Includes Cron jobs to keep the server running.
 
 ## Run locally:
 
@@ -17,15 +16,15 @@ This project is a comprehensive expense tracker application built using the MERN
 
 - Node.js
 - MongoDB
-- npm/yarn
+- npm
 
 ### Installation
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/mern-expense-tracker.git
-   cd mern-expense-tracker
+   git clone https://github.com/swarraaa/Expense-Tracker.git
+   cd Expense-Tracker
    ```
 
 2. **Install server dependencies:**
@@ -50,10 +49,8 @@ This project is a comprehensive expense tracker application built using the MERN
 
    ```
    MONGO_URI=your_mongodb_uri
-   SESSION_SECRET=mysecret123
+   SESSION_SECRET=your_secret
    ```
-
-   Replace `your_mongodb_uri` with your actual MongoDB connection URI.
 
 2. **Frontend `.env` Setup:**
 
